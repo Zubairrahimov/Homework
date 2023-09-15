@@ -1,0 +1,54 @@
+Django project:
+1.cmd (venv, activate, pip install, database-> pip install psycopg2, psql -U postgres )
+(
+Create user bekzod with encrypted password '1111';
+CREATE DATABASE testlearndb OWNER bekzod;
+grant all privileges on database testlearndb to bekzod;
+ALTER ROLE bekzod SET client_encoding TO 'utf8';
+ALTER ROLE bekzod SET default_transaction_isolation TO 'read committed';
+ALTER ROLE bekzod SET timezone TO 'UTC';
+
+
+
+2.project settings.py
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'testlearndb', 
+        'USER': 'bekzod',
+        'PASSWORD': '1111',
+        'HOST': '127.0.0.1', 
+        'PORT': '5432',
+}}
+
+
+add to installed apps essential things like app itself and etc: , 
+
+3.models.py 
+(creating models , do not forgret about Meta class with __str__ function)
+
+4.admin.py
+register models to admin.py import first
+
+6.serializers.py
+creating serializers 
+fisrt(from rest_framework import serializers)
+then adding your model from models.py
+
+
+
+7.views.py
+create your views
+
+8.urls.py(config .)
+importing include with path
+creating another path in which will be your urls.py(apps)\
+
+9.urls.py(app)
+create new file named urls.py to your app folder
+from django.urls import path
+create list named urlpatterns[here add your path]
+
+
+
+now create superuser and runserver to make sure everything works perfectly to make sure use insomnia or admin panel
