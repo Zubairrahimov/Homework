@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import CustomUser2
+from polls2.forms import NewsForm2
 from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
@@ -22,6 +23,13 @@ class CustomUserAdmin(UserAdmin):
     )
     search_fields = ("username",)
     ordering = ("username",)
+
+
+
+class NewsAdmin(admin.ModelAdmin):
+    form = NewsForm2
+    list_display = ("title", 'body')
+    search_fields = ("title", "body")
 
 
 admin.site.register((CustomUser2), CustomUserAdmin)
